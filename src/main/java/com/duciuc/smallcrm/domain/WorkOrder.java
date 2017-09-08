@@ -3,27 +3,28 @@ package com.duciuc.smallcrm.domain;
 import org.joda.time.DateTime;
 
 public class WorkOrder {
-    private String descrition;
+    private String description;
     private Person customer;
     private OrderType orderType;
     private DateTime enterDate;
     private DateTime finishDate;
 
-    public WorkOrder(){}
+    public WorkOrder() {
+    }
 
-    public WorkOrder(String descrition, Person customer, OrderType orderType, DateTime enterDate) {
-        this.descrition = descrition;
+    public WorkOrder(String description, Person customer, OrderType orderType, DateTime enterDate) {
+        this.description = description;
         this.customer = customer;
         this.orderType = orderType;
         this.enterDate = enterDate;
     }
 
-    public String getDescrition() {
-        return descrition;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescrition(String descrition) {
-        this.descrition = descrition;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Person getCustomer() {

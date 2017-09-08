@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/welcome")
 public class WellComeController {
 
-@RequestMapping(method = RequestMethod.GET)
-    public String wellcome(Model model){
+    @RequestMapping(method = RequestMethod.GET)
+    public String wellcome(Model model) {
 
-    DateTime today = DateTime.now();
-    model.addAttribute("today",today);
-    return "welcome";
+        DateTime today = DateTime.now();
+        model.addAttribute("today", today);
+        return "welcome";
 
-}
+    }
 
 }

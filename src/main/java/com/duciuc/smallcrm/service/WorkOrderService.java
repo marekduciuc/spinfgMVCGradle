@@ -8,4 +8,6 @@ public interface WorkOrderService {
 
     List<WorkOrder> getOrdersForCustomer(String name);
 
+    void addOrder(WorkOrder workOrder) throws WorkOrderInPastExcetion;
+
 }

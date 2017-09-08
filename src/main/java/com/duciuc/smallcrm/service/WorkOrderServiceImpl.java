@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
 
 public class WorkOrderServiceImpl implements WorkOrderService {
 
-    public static final OrderType GAS_NEW = new OrderType(1,"Novy Plyn");
-    public static final OrderType GAS_REPAIR = new OrderType(1,"Oprava Plynu");
-    public static final OrderType GAS_REVISION = new OrderType(1,"Revyze Plynu");
+    public static final OrderType GAS_NEW = new OrderType(1, "Novy Plyn");
+    public static final OrderType GAS_REPAIR = new OrderType(1, "Oprava Plynu");
+    public static final OrderType GAS_REVISION = new OrderType(1, "Revize Plynu");
 
     private List<WorkOrder> workOrders;
 
@@ -21,15 +21,23 @@ public class WorkOrderServiceImpl implements WorkOrderService {
         workOrders = new ArrayList<WorkOrder>();
 
         workOrders.add(new WorkOrder("Revize duciuc",
-                new Person("Marek","Duciuc","marek.duciuc@gmail.com","608556401"),
-                GAS_REVISION, DateTime.now()));
+                new Person("Marek", "Duciuc", "marek.duciuc@gmail.com", "608556401"),
+                WorkOrderServiceImpl.GAS_REVISION, DateTime.now()));
         workOrders.add(new WorkOrder("Korel novak",
-                new Person("Petr","Novak","petr.novak@gmail.com","608556401"),
-                GAS_NEW, DateTime.now()));
+                new Person("Petr", "Novak", "petr.novak@gmail.com", "608556401"),
+                WorkOrderServiceImpl.GAS_NEW, DateTime.now()));
     }
 
     @Override
     public List<WorkOrder> getOrdersForCustomer(String name) {
-        return workOrders.stream().filter(a-> a.getCustomer().getName().equals(name)).collect(Collectors.toList());
+        return workOrders.stream().filter(a -> a.getCustomer().getName().equals(name)).collect(Collectors.toList());
+    }
+
+    @Override
+    public void addOrder(WorkOrder workOrder) throws WorkOrderInPastExcetion {
+        if (workOrder.getEnterDate().isBeforeNow())
+            throw new WorkOrderInPastExcetion(workOrder.getDescription(), workOrder.getEnterDate());
+        workOrders.add(workOrder);
+
     }
 }

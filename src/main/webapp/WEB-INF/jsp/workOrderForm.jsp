@@ -21,7 +21,7 @@
 <body>
 
 <form:form method="post" modelAttribute="WorkOrder">
-    <form:errors path="*" cssClass="error"/>
+    <%--<form:errors path="*" cssClass="error"/>--%>
     <table>
 
         <tr>
@@ -36,8 +36,18 @@
         </tr>
         <tr>
             <td><spring:message code="person.surName"/></td>
-            <td><form:input path="customer.surName"/></td>
-            <td><form:errors path="customer.surName" cssClass="error"/></td>
+            <td><form:input path="customer.surname"/></td>
+            <td><form:errors path="customer.surname" cssClass="error"/></td>
+        </tr>
+
+        <tr>
+            <td><spring:message code="workorder.dateEntry"/></td>
+            <td><form:input path="enterDate"/></td>
+            <td><form:errors path="enterDate" cssClass="error"/></td>
+        </tr>
+
+        <tr>
+            <td colspan="3"><input type="submit" value="<spring:message code="common.save"/> "/>
         </tr>
 
     </table>

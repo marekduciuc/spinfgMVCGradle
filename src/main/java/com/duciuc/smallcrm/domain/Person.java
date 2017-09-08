@@ -14,6 +14,9 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
+    public Person() {
+    }
+
     public String getName() {
         return name;
     }

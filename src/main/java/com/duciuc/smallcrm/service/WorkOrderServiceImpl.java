@@ -35,8 +35,8 @@ public class WorkOrderServiceImpl implements WorkOrderService {
 
     @Override
     public void addOrder(WorkOrder workOrder) throws WorkOrderInPastExcetion {
-        if (workOrder.getEnterDate().isBeforeNow())
-            throw new WorkOrderInPastExcetion(workOrder.getDescription(), workOrder.getEnterDate());
+        // if (workOrder.getEnterDate().isBeforeNow())
+        //   throw new WorkOrderInPastExcetion(workOrder.getDescription(), workOrder.getEnterDate());
         workOrders.add(workOrder);
 
     }
